@@ -50,7 +50,7 @@ public class Main {
 			System.out.println("\t\t+++++++++++++++++++++++++++++");
 			System.out.println("\t\t+ WELCOME TO THE SYSTEM     +");
 			System.out.println("\t\t+                           +");
-			System.out.println("\t\t+++++++++++++++++++++++++++++\n");
+//			System.out.println("\t\t+++++++++++++++++++++++++++++\n");
 			System.out.println("\n PLEASE ENTER USERNAME TO LOGIN : \t");
 			String username = scn.next();
 
