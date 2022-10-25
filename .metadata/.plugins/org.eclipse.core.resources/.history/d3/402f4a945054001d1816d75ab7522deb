@@ -197,7 +197,7 @@ public class Main {
 								System.out.println("\tStudent Email: " + s.stdEmail);
 								for (Course c : s.courseList) {
 									for (Marks m : c.getMarksList()) {
-										System.out.println("\nCourse Name: " + c.getCourseName() + " \tCourse Marks"
+										System.out.println("\nCourse Name: " + c.courseName + " \tCourse Marks"
 												+ m.getCousrseMark());
 									}
 								}

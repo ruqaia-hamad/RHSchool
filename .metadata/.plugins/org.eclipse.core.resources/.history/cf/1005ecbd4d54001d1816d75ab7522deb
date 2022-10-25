@@ -197,7 +197,7 @@ public class Main {
 								System.out.println("\tStudent Email: " + s.stdEmail);
 								for (Course c : s.courseList) {
 									for (Marks m : c.getMarksList()) {
-										System.out.println("\nCourse Name: " + c.getCourseName() + " \tCourse Marks"
+										System.out.println("\nCourse Name: " + c.courseName + " \tCourse Marks"
 												+ m.getCousrseMark());
 									}
 								}
@@ -251,10 +251,10 @@ public class Main {
 								int factroialNumber = sc.nextInt();
 								long factorial = factorialNumbers(factroialNumber);
 
-								System.out.println("The factorial of " + factroialNumber + " is :\t" + factorial + "\n");
+								System.out
+										.println("The factorial of " + factroialNumber + " is :\t" + factorial + "\n");
 								break;
 							case 2:
-								
 								System.out.println("Please Enter series length: \n");
 								int count = sc.nextInt();
 								int num1 = 0;

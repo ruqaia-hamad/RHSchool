@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Course {
- private String courseName;
+ String courseName;
  
  void setCourseName(String courseName) {
 	 this.courseName=courseName;
