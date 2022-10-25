@@ -193,8 +193,8 @@ public class Main {
 						for (School h : schoolList) {
 							System.out.println("\tSchool Name: " + h.getSchoolName());
 							for (Student s : h.stdList) {
-								System.out.println("\tStudent Name: " + s.getStudentName());
-								System.out.println("\tStudent Email: " + s.getStdEmail());
+								System.out.println("\tStudent Name: " + s.studentName);
+								System.out.println("\tStudent Email: " + s.stdEmail);
 								for (Course c : s.courseList) {
 									for (Marks m : c.getMarksList()) {
 										System.out.println("\nCourse Name: " + c.getCourseName() + " \tCourse Marks"
