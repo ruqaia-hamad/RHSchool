@@ -54,7 +54,7 @@ public class Main {
 			System.out.println("\n PLEASE ENTER USERNAME TO LOGIN : \t");
 			String username = scn.next();
 
-			System.out.println("\n PLEASE ENTER PASSWORD: \t");
+//			System.out.println("\n PLEASE ENTER PASSWORD: \t");
 			int loginpass = sc.nextInt();
 			boolean checkUserName = username.equals(teacherName);
 			if (checkUserName == true && loginpass == password) {
