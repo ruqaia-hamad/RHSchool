@@ -72,7 +72,7 @@ public class Main {
 					System.out.println("|  [4] Print duplicated Emails |");
 					System.out.println("|  [5] Student Fees            |");
 					System.out.println("|  [6] Sub Menu                |");
-//					System.out.println("|  [7] Exit from program       |");
+					System.out.println("|  [7] Exit from program       |");
 					System.out.println("================================");
 					System.out.println("Please Enter your Choice: \n");
 					int option = sc.nextInt();
