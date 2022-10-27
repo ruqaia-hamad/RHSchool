@@ -25,7 +25,7 @@ public class Main {
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 
 		List<School> schoolList = new ArrayList<>();
 		Set<String> emialSet = new HashSet<>();
@@ -52,21 +52,14 @@ public class Main {
 		boolean isUserExit = true;
 		String teacherName = "Ruqaia";
 		int password = 1234;
-		
 		 File file = new File("C:\\Users\\user015\\eclipse-workspace\\RHNewCode\\School\\history.txt");
 		    ObjectOutputStream oos=null;
 		    ObjectInputStream ois=null;
-		    try {
 		    if(file.isFile()){
 		        ois=new ObjectInputStream  (new FileInputStream(file) );
 		        historyStack =(Stack<String>)ois.readObject();
 		                 ois.close();
-		    
-		    }}catch(Exception e) {
-				System.out.println(e);
-				
-			}
-		    
+		    }
 		while (isUserExit) {
 			System.out.println("\t\t+++++++++++++++++++++++++++++");
 			System.out.println("\t\t+ WELCOME TO THE SYSTEM     +");
@@ -219,15 +212,11 @@ public class Main {
 								courseExit = false;
 							}
 
-						} 
-						try {
+						}
+
 						 oos=new ObjectOutputStream (new FileOutputStream(file) );
 		                 oos.writeObject(historyStack);
-		                 oos.close();}catch(Exception e) {
-		     				System.out.println(e);
-		    				
-		     			}
-						
+		                 oos.close();
 					
 						break;
 					case 2:
