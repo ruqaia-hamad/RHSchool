@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.Stack;
 
-public class Main  {
+public class Main {
 	public static long factorialNumbers(int num) {
 //		System.out.println("Factorial of: "+ num);
 		if (num >= 1)
@@ -17,7 +17,7 @@ public class Main  {
 	}
 
 	public Main() {
-
+// TODO Auto-generated constructor stub
 	}
 
 	public static void main(String[] args) {
@@ -160,7 +160,8 @@ public class Main  {
 
 										courseExit = false;
 								}
-							 
+								schoolList.add(schools);
+								schools.stdList.add(students);
 
 								System.out.println("If You want To Add Student press 1 ");
 								int exitStudentOutput = sc.nextInt();

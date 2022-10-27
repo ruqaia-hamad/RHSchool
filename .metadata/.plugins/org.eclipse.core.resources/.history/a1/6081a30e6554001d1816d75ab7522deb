@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 public class Student {
 
-     private String studentName;
-     private String stdEmail;
+    String studentName;
+    String stdEmail;
     
     public void setStudentName(String studentName)
     {

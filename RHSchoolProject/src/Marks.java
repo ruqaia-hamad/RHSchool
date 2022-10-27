@@ -1,6 +1,6 @@
 
 public class Marks {
-   int cousrseMark;
+  private int cousrseMark;
 	
    void setCousrseMark(int cousrseMark) {
 	   if(cousrseMark>0 && cousrseMark<100) {
