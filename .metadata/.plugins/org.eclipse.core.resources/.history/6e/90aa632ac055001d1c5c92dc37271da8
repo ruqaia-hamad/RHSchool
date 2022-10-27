@@ -1,8 +1,4 @@
 
-import java.io.FileOutputStream;
-import java.io.*;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -25,14 +21,14 @@ public class Main {
 
 	}
 
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args) {
 
 		List<School> schoolList = new ArrayList<>();
 		Set<String> emialSet = new HashSet<>();
 		List<String> emailList = new ArrayList<>();
 		List<Student> stdList = new ArrayList<>();
 		List<Marks> marksList = new ArrayList<>();
-		List<Course> courseList = new ArrayList<>();
+		List<Course> courseList= new ArrayList<>();
 
 		Stack<String> historyStack = new Stack<String>();
 		Scanner sc = new Scanner(System.in);
@@ -52,14 +48,7 @@ public class Main {
 		boolean isUserExit = true;
 		String teacherName = "Ruqaia";
 		int password = 1234;
-		 File file = new File("C:\\Users\\user015\\eclipse-workspace\\RHNewCode\\School\\history.txt");
-		    ObjectOutputStream oos=null;
-		    ObjectInputStream ois=null;
-		    if(file.isFile()){
-		        ois=new ObjectInputStream  (new FileInputStream(file) );
-		        historyStack =(Stack<String>)ois.readObject();
-		                 ois.close();
-		    }
+
 		while (isUserExit) {
 			System.out.println("\t\t+++++++++++++++++++++++++++++");
 			System.out.println("\t\t+ WELCOME TO THE SYSTEM     +");
@@ -104,18 +93,7 @@ public class Main {
 							schools.setSchoolName(enterSchool);
 
 							historyStack.push(enterSchool);
-//							try {
-//								FileOutputStream fos=new FileOutputStream("C:\\Users\\user015\\eclipse-workspace\\RHNewCode\\School\\history.txt") ;
-//								 ObjectOutputStream oos=new  ObjectOutputStream(fos);
-//								 oos.writeObject(schools);
-//								 oos.flush();
-//								 oos.close();
-//								 
-//							}
-//							catch(Exception e) {
-//								System.out.println(e);
-//								
-//							}
+
 							courseExit = Boolean.TRUE;
 							while (isExit) {
 								Student students = new Student();
@@ -130,7 +108,6 @@ public class Main {
 								emailList.add(stdEmail);
 
 								isCurrencyExit = Boolean.TRUE;
-							
 
 								while (isCurrencyExit) {
 									System.out.println(
@@ -189,9 +166,6 @@ public class Main {
 										courseExit = false;
 								}
 
-								schoolList.add(schools);
-								stdList.add(students);
-								schools.setStdList(stdList);
 								System.out.println("If You want To Add Student press 1 ");
 								int exitStudentOutput = sc.nextInt();
 								if (exitStudentOutput == 0) {
@@ -214,11 +188,8 @@ public class Main {
 
 						}
 
-						 oos=new ObjectOutputStream (new FileOutputStream(file) );
-		                 oos.writeObject(historyStack);
-		                 oos.close();
-					
 						break;
+
 					case 2:
 
 						System.out.println("*  YOUR REPORT  *");
@@ -239,18 +210,6 @@ public class Main {
 						break;
 
 					case 3:
-						
-//						try {
-//							ObjectInputStream  ois=new ObjectInputStream  (new FileInputStream("history.txt") );
-//							 School schoolInput=(School)ois.readObject();
-//							System.out.print(schoolInput.getSchoolName());
-//							 ois.close();
-//							 
-//						}
-//						catch(Exception e) {
-//							System.out.println(e);
-//							
-//						}
 
 						while (historyStack.empty() == false) {
 							System.out.println(historyStack.pop());

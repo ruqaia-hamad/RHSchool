@@ -1,32 +1,26 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class School {
 
-	 private String schoolName;
-	 
-	 void setSchoolName(String schoolName) {
-		 this.schoolName=schoolName;
-	 }
-	 
-	 String getSchoolName() {
-		 return schoolName;
-	 }
-	
-	public School() {
-		// TODO Auto-generated constructor stub
+	private String schoolName;
+	private List<Student> stdList;
+
+	void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
 	}
 
-
-ArrayList<Student> stdList=new ArrayList<>();
-	
-	void setStdList(ArrayList<Student> stdList)
-	{
-	this.stdList = stdList;	
+	String getSchoolName() {
+		return schoolName;
 	}
-	public ArrayList<Student> getStdList()
-	{
+
+	public void setStdList(List<Student> stdList) {
+		this.stdList = stdList;
+	}
+
+	public List<Student> getStdList() {
 		return stdList;
 	}
-	
 
+	
 }

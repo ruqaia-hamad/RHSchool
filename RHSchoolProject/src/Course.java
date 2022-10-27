@@ -1,29 +1,25 @@
-import java.util.ArrayList;
+
+import java.util.List;
 
 public class Course {
- private String courseName;
- 
- void setCourseName(String courseName) {
-	 this.courseName=courseName;
- }
- 
- String getCourseName() {
-	 return courseName;
- }
-	public Course() {
-		// TODO Auto-generated constructor stub
+	private String courseName;
+	private List<Marks> marksList;
+
+	void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
-	
-	ArrayList<Marks> marksList=new ArrayList<>();
-	
-	
-	void setMarksList(ArrayList<Marks> marksList) {
-		this.marksList=marksList;
+
+	String getCourseName() {
+		return courseName;
 	}
-	
-	public ArrayList<Marks> getMarksList() {
+
+	public void setMarksList(List<Marks> marksList) {
+		this.marksList = marksList;
+	}
+
+	public List<Marks> getMarksList() {
 		return marksList;
-		
+
 	}
 
 }
