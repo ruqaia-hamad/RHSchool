@@ -52,11 +52,23 @@ public class Main {
 		boolean isUserExit = true;
 		String teacherName = "Ruqaia";
 		int password = 1234;
-		
+
 		File file = new File("C:\\Users\\user015\\eclipse-workspace\\RHNewCode\\School\\history.txt");
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
+		try {
+			if (file.isFile()) {
+				ois = new ObjectInputStream(new FileInputStream(file));
+				StringBuilder sb = (StringBuilder) ois.readObject();
+				ois.close();
+				
+				System.out.println("This is string builder: " + sb.toString());
 
+			}
+		} catch (IOException exception) {
+			System.out.println("An unexpected error is occurred.");
+			exception.printStackTrace();
+		}
 		
 
 		while (isUserExit) {
@@ -68,8 +80,8 @@ public class Main {
 
 			System.out.println("\n PLEASE ENTER PASSWORD: \t");
 			int loginpass = sc.nextInt();
-			boolean checkUserName = username.equals(username);
-			if (checkUserName == true && loginpass == loginpass) {
+			boolean checkUserName = username.equals(teacherName);
+			if (checkUserName == true && loginpass == password) {
 
 				System.out.println("your login is seccessful");
 				do {
@@ -213,25 +225,6 @@ public class Main {
 							}
 
 						}
-						
-
-						try {
-							oos = new ObjectOutputStream(new FileOutputStream(file));
-							StringBuilder st = new StringBuilder();
-							while(!historyStack.isEmpty()) {
-								String s = historyStack.pop();
-								st.append(s);
-							}
-							oos.writeObject(st);
-							/*
-							 * while (historyStack.empty() == false) {
-							 * System.out.println(historyStack.pop()); }
-							 */
-							oos.close();
-						} catch (IOException exception) {
-							System.out.println("An unexpected error is occurred");
-							exception.printStackTrace();
-						}
 
 						break;
 					case 2:
@@ -254,17 +247,22 @@ public class Main {
 						break;
 
 					case 3:
-						try {
-							if (file.isFile()) {
-								ois = new ObjectInputStream(new FileInputStream(file));
-								StringBuilder sb = (StringBuilder) new StringBuilder(ois.readObject().toString());
-								ois.close();
-								
-								System.out.println("This is string builder: " + sb.toString() + "\t");
 
+						try {
+							oos = new ObjectOutputStream(new FileOutputStream(file));
+							StringBuilder st = new StringBuilder();
+							while(!historyStack.isEmpty()) {
+								String s = historyStack.pop();
+								st.append(s);
 							}
+							oos.writeObject(st);
+							/*
+							 * while (historyStack.empty() == false) {
+							 * System.out.println(historyStack.pop()); }
+							 */
+							oos.close();
 						} catch (IOException exception) {
-							System.out.println("An unexpected error is occurred.");
+							System.out.println("An unexpected error is occurred");
 							exception.printStackTrace();
 						}
 
