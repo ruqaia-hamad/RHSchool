@@ -24,8 +24,23 @@ public class Main {
 	public Main() {
 
 	}
+	public static void validateUsername(String username) throws IllegalArgumentException {
+		String teacherName = "Ruqaia";
+       
+        if (!username.matches(teacherName)) {
+            throw new IllegalArgumentException("Invalid username.");
+        }
+    }
+	public static void validatePassword(int password) throws NumberFormatException {
+		int userPassword = 1234;
+		
+		if(password!=userPassword) {
+			  throw new NumberFormatException("Invalid password");
+		}
+       
+	}
 
-	public static void main(String[] args)throws Exception {
+	public static void main(String[] args) throws Exception {
 
 		List<School> schoolList = new ArrayList<>();
 		Set<String> emialSet = new HashSet<>();
@@ -50,26 +65,29 @@ public class Main {
 		boolean schoolExit = true;
 		boolean exitMenu = true;
 		boolean isUserExit = true;
-		String teacherName = "Ruqaia";
-		int password = 1234;
+//		String teacherName = "Ruqaia";
+//		int password = 1234;
 		
+		FileOutputStream fout;
+		ObjectOutputStream out = null;
 		File file = new File("C:\\Users\\user015\\eclipse-workspace\\RHNewCode\\School\\history.txt");
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
-
-		
 
 		while (isUserExit) {
 			System.out.println("\t\t+++++++++++++++++++++++++++++");
 			System.out.println("\t\t+ WELCOME TO THE SYSTEM     +");
 			System.out.println("\t\t+++++++++++++++++++++++++++++\n");
+			try {
 			System.out.println("\n PLEASE ENTER USERNAME TO LOGIN : \t");
 			String username = scn.next();
-
+			validateUsername(username);
 			System.out.println("\n PLEASE ENTER PASSWORD: \t");
-			int loginpass = sc.nextInt();
-			boolean checkUserName = username.equals(username);
-			if (checkUserName == true && loginpass == loginpass) {
+			int password = sc.nextInt();
+			validatePassword(password);
+			
+//			boolean checkUserName = username.equals(teacherName );
+//			if (checkUserName == true && loginpass == password) {
 
 				System.out.println("your login is seccessful");
 				do {
@@ -79,13 +97,14 @@ public class Main {
 					System.out.println("\t\t+++++++++++++++++++++++++++++\n");
 					System.out.println("Please Choose Number From Menu: \n");
 					System.out.println("================================");
-					System.out.println("|  [1] Enter Student Details   |");
-					System.out.println("|  [2] Print Report            |");
-					System.out.println("|  [3] Show History            |");
-					System.out.println("|  [4] Print duplicated Emails |");
-					System.out.println("|  [5] Student Fees            |");
-					System.out.println("|  [6] Sub Menu                |");
-					System.out.println("|  [7] Exit from program       |");
+					System.out.println("|  [1] Enter Student Details    |");
+					System.out.println("|  [2] Print Report             |");
+					System.out.println("|  [3] Show History             |");
+					System.out.println("|  [4] Print duplicated Emails  |");
+					System.out.println("|  [5] Student Fees             |");
+					System.out.println("|  [6] Sub Menu                 |");
+					System.out.println("|  [7] Serialization for Student|");
+					System.out.println("|  [8] Exit from program        |");
 					System.out.println("================================");
 					System.out.println("Please Enter your Choice: \n");
 					int option = sc.nextInt();
@@ -213,12 +232,11 @@ public class Main {
 							}
 
 						}
-						
 
 						try {
 							oos = new ObjectOutputStream(new FileOutputStream(file));
 							StringBuilder st = new StringBuilder();
-							while(!historyStack.isEmpty()) {
+							while (!historyStack.isEmpty()) {
 								String s = historyStack.pop();
 								st.append(s);
 							}
@@ -259,8 +277,8 @@ public class Main {
 								ois = new ObjectInputStream(new FileInputStream(file));
 								StringBuilder sb = (StringBuilder) new StringBuilder(ois.readObject().toString());
 								ois.close();
-								
-								System.out.println("This is string builder: " + sb.toString() + "\t");
+
+								System.out.println(sb.toString() + "\n");
 
 							}
 						} catch (IOException exception) {
@@ -338,8 +356,40 @@ public class Main {
 						} while (isExitMenu);
 
 						break;
-
 					case 7:
+						try {
+					Student std=new Student("Ruqaia","ruq7771@gmail.com");
+					Student std1=new Student("Amaal","amal@gmail.com");
+					Student std2=new Student("Noor","noor@gmail.com");
+					fout=new FileOutputStream("C:\\Users\\user015\\eclipse-workspace\\RHNewCode\\School\\school.txt");
+				    out=new ObjectOutputStream(fout);
+					out.writeObject(std);
+					out.writeObject(std1);
+					out.writeObject(std2);
+					out.flush();
+					out.close();
+					System.out.println("Serialization");
+						}catch(Exception e){
+							System.out.println(e);
+							
+						}
+						
+						try {
+						ObjectInputStream in=new ObjectInputStream(new FileInputStream("C:\\\\Users\\\\user015\\\\eclipse-workspace\\\\RHNewCode\\\\School\\\\school.txt"));
+						Student stdu1=(Student)in.readObject();
+						Student stdu2=(Student)in.readObject();
+						Student stdu3=(Student)in.readObject();
+						System.out.println(stdu1.getStudentName()+"\t"+stdu1.getStdEmail());
+						System.out.println(stdu2.getStudentName()+"\t"+stdu2.getStdEmail());
+						System.out.println(stdu3.getStudentName()+"\t"+stdu3.getStdEmail());
+						in.close();
+						}catch(Exception e) {
+							System.out.println(e);
+						}
+						
+						break;
+
+					case 8:
 						System.out.println("+++++++++++++++++++++++++++++");
 						System.out.println("+        THANK YOU          +");
 						System.out.println("+++++++++++++++++++++++++++++");
@@ -348,11 +398,12 @@ public class Main {
 					}
 				} while (exitMenu);
 
-			}
+			}catch(Exception e) {
 
-			System.out.println("Please login again");
+			System.out.println("Please login again" + e);
 
-		}
+		}}
+		
 
 		isUserExit = false;
 	}

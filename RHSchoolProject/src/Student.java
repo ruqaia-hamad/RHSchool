@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student {
+public class Student implements Serializable{
 
 	private String studentName;
 	private String stdEmail;
@@ -31,8 +32,21 @@ public class Student {
 	public List<Course> getCourseList() {
 		return courseList;
 	}
+	
+	
+	public Student() {
+		this.studentName=studentName;
+		this.stdEmail=stdEmail;
+	}
+	
 
-	Course CourseOfStudent = new Course();
+	public Student(String studentName, String stdEmail) {
+		this.studentName=studentName;
+		this.stdEmail=stdEmail;
+	}
+
+
+
 
 	
 
