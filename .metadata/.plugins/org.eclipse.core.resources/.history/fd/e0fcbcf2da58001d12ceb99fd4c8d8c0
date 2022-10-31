@@ -1,0 +1,22 @@
+import java.util.InputMismatchException;
+
+public class Validation {
+	
+	
+	public  void validateUsername(String username) throws IllegalArgumentException {
+		String teacherName = "Ruqaia";
+       
+        if (!username.matches(teacherName)) {
+            throw new IllegalArgumentException("Invalid username.");
+        }
+    }
+	public void validatePassword(int password) throws InputMismatchException {
+		int userPassword = 1234;
+		
+		if(password!=userPassword) {
+			  throw new InputMismatchException("Invalid password");
+		}
+       
+	}
+
+}

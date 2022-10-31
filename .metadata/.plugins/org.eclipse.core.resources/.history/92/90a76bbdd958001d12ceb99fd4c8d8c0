@@ -68,11 +68,13 @@ public class Main {
 				Validation validation=new Validation();
 			System.out.println("\n PLEASE ENTER USERNAME TO LOGIN : \t");
 			String username = scn.next();
-			validation.validateUsername(username);
+			Validation.validateUsername(username);
 			System.out.println("\n PLEASE ENTER PASSWORD: \t");
-			String password = sc.next();
-			validation.validatePassword(password);
-
+			int password = sc.nextInt();
+			Validation.validatePassword(password);
+			
+//			boolean checkUserName = username.equals(teacherName );
+//			if (checkUserName == true && loginpass == password) {
 
 				System.out.println("your login is seccessful");
 				do {
@@ -385,7 +387,7 @@ public class Main {
 
 			}catch(Exception e) {
 
-			System.out.println("Please login again " + e.getMessage());
+			System.out.println("Please login again" + e);
 
 		}}
 		

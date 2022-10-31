@@ -24,7 +24,21 @@ public class Main {
 	public Main() {
 
 	}
-
+	public static void validateUsername(String username) throws IllegalArgumentException {
+		String teacherName = "Ruqaia";
+       
+        if (!username.matches(teacherName)) {
+            throw new IllegalArgumentException("Invalid username.");
+        }
+    }
+	public static void validatePassword(int password) throws NumberFormatException {
+		int userPassword = 1234;
+		
+		if(password!=userPassword) {
+			  throw new NumberFormatException("Invalid password");
+		}
+       
+	}
 
 	public static void main(String[] args) throws Exception {
 
@@ -65,14 +79,15 @@ public class Main {
 			System.out.println("\t\t+ WELCOME TO THE SYSTEM     +");
 			System.out.println("\t\t+++++++++++++++++++++++++++++\n");
 			try {
-				Validation validation=new Validation();
 			System.out.println("\n PLEASE ENTER USERNAME TO LOGIN : \t");
 			String username = scn.next();
-			validation.validateUsername(username);
+			validateUsername(username);
 			System.out.println("\n PLEASE ENTER PASSWORD: \t");
-			String password = sc.next();
-			validation.validatePassword(password);
-
+			int password = sc.nextInt();
+			validatePassword(password);
+			
+//			boolean checkUserName = username.equals(teacherName );
+//			if (checkUserName == true && loginpass == password) {
 
 				System.out.println("your login is seccessful");
 				do {
@@ -385,7 +400,7 @@ public class Main {
 
 			}catch(Exception e) {
 
-			System.out.println("Please login again " + e.getMessage());
+			System.out.println("Please login again" + e);
 
 		}}
 		

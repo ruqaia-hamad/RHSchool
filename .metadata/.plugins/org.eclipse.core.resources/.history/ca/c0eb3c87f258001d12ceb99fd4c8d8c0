@@ -72,7 +72,9 @@ public class Main {
 			System.out.println("\n PLEASE ENTER PASSWORD: \t");
 			String password = sc.next();
 			validation.validatePassword(password);
-
+			
+//			boolean checkUserName = username.equals(teacherName );
+//			if (checkUserName == true && loginpass == password) {
 
 				System.out.println("your login is seccessful");
 				do {
