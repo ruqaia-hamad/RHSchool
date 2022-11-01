@@ -2,25 +2,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student implements Serializable,StudentInterface{
+public class Student implements Serializable{
 
 	private String studentName;
 	private String stdEmail;
-	private int stdAge;
+
 	private List<Course> courseList;
-	@Override
-	public void stdAge(int age) {
-		if(age>18) {
-			System.out.println("Student overage ");
-		}
-		else if(age<6) {
-			System.out.println("Student uderage");
-		}
-		else {
-			System.out.println("Student age allegeable complete  registration. ");
-		}
-		
-	}
+
 	public void setStudentName(String studentName) {
 		this.studentName = studentName;
 	}
@@ -36,14 +24,6 @@ public class Student implements Serializable,StudentInterface{
 	String getStdEmail() {
 		return stdEmail;
 	}
-	public void setStdAge(int stdAge) {
-		this.stdAge = stdAge;
-	}
-
-	int getstdAge() {
-		return stdAge;
-	}
-
 
 	public void setCourseList(List<Course> courseList) {
 		this.courseList = courseList;

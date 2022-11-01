@@ -129,19 +129,13 @@ public class Main {
 							}catch(Exception e) {
 					
 								System.out.println(e.getMessage());
-								continue;
+								break;
 
 							}
-							Student students = new Student();
-							System.out.println("Enter Student Age");
-							int stdAge = scn.nextInt();
-							students.setStdAge(stdAge);
-							String age=Integer.toString(stdAge);
-							historyStack.push(age);
-							if(stdAge>5 && stdAge<=18) {
+				
 							courseExit = Boolean.TRUE;
 							while (isExit) {
-							
+								Student students = new Student();
 								
 								System.out.println("Enter Student Name");
 								String stdName = scn.next();
@@ -285,8 +279,6 @@ public class Main {
 								courseExit = false;
 							}
 
-						}else {
-							System.out.println("Student cant be registerd");
 						}
 
 						try {
@@ -305,7 +297,6 @@ public class Main {
 						} catch (IOException exception) {
 							System.out.println("An unexpected error is occurred");
 							exception.printStackTrace();
-						}
 						}
 
 						break;

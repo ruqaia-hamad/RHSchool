@@ -129,7 +129,7 @@ public class Main {
 							}catch(Exception e) {
 					
 								System.out.println(e.getMessage());
-								continue;
+								break;
 
 							}
 							Student students = new Student();
@@ -286,7 +286,7 @@ public class Main {
 							}
 
 						}else {
-							System.out.println("Student cant be registerd");
+							System.out.println("Student can't be registered");
 						}
 
 						try {
