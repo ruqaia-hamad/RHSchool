@@ -11,16 +11,21 @@ public class Student implements Serializable,StudentInterface{
 	@Override
 	public void stdAge(int age) {
 		if(age>18) {
-			System.out.println("Student overage ");
+			System.out.println("Student Over age ");
 		}
 		else if(age<6) {
-			System.out.println("Student uderage");
+			System.out.println("Student Under Age");
 		}
 		else {
 			System.out.println("Student age allegeable complete  registration. ");
 		}
 		
 	}
+	@Override
+	public void stdName(String name) {
+		System.out.println(name);
+	}
+	
 	public void setStudentName(String studentName) {
 		this.studentName = studentName;
 	}

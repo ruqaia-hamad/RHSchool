@@ -40,8 +40,8 @@ public class Main {
 		Scanner scn = new Scanner(System.in);
 		int currency = 0;
 		String currencyName = "";
-		HashMap<String, Double> studentFees = new HashMap<String, Double>();
-		HashMap<String, HashMap<String, Double>> studentAmount = new HashMap<String, HashMap<String, Double>>();
+		HashMap<String, Double> studentFees = new HashMap<>();
+		HashMap<String, HashMap<String, Double>> studentAmount = new HashMap<>();
 		double feesAmount = 0;
 		double amountCal = 0;
 //		double amount=0;
@@ -132,20 +132,22 @@ public class Main {
 								continue;
 
 							}
-							Student students = new Student();
-							System.out.println("Enter Student Age");
-							int stdAge = scn.nextInt();
-							students.setStdAge(stdAge);
-							String age=Integer.toString(stdAge);
-							historyStack.push(age);
-							if(stdAge>5 && stdAge<=18) {
+						
 							courseExit = Boolean.TRUE;
 							while (isExit) {
 							
-								
-								System.out.println("Enter Student Name");
+								Student students = new Student();
+								System.out.println("Enter Student Age");
+								int stdAge = scn.nextInt();
+								students.setStdAge(stdAge);
+								String age=Integer.toString(stdAge);
+								historyStack.push(age);
+								students.stdAge(stdAge);
+								if(stdAge>5 && stdAge<=18) {
+								System.out.println("Enter Student Name \n");
 								String stdName = scn.next();
 								students.setStudentName(stdName);
+								students.stdName("Student name is : " +stdName +"\n");
 								historyStack.push(stdName);
 								try {
 									if(!stdName.matches("^[a-zA-Z]*$")) {
@@ -160,7 +162,7 @@ public class Main {
 
 								}
 								
-								System.out.println("Enter Student Email");
+								System.out.println("Enter"+" "+stdName+" "+ "Email");
 								String stdEmail = scn.next();
 								students.setStdEmail(stdEmail);
 								historyStack.push(stdEmail);
@@ -248,12 +250,14 @@ public class Main {
 									String addMark = Integer.toString(addCourseMark);
 									historyStack.push(addMark);
 									courseMarks.setCousrseMark(addCourseMark);
+									courseMarks.stdMark(addCourseMark);
 									checkMark=false;
 									}
 									marksList.add(courseMarks);
 									studentCourse.setMarksList(marksList);
 									courseList.add(studentCourse);
 									students.setCourseList(courseList);
+									
 
 									System.out.println("Do You want To Add course press 1 if  you want exit press 0");
 									int exitoutput = sc.nextInt();
@@ -261,7 +265,8 @@ public class Main {
 
 										courseExit = false;
 								}
-
+								
+                            
 								schoolList.add(schools);
 								stdList.add(students);
 								schools.setStdList(stdList);
@@ -269,6 +274,9 @@ public class Main {
 								int exitStudentOutput = sc.nextInt();
 								if (exitStudentOutput == 0) {
 									isExit = false;
+								}
+								}else {
+									System.out.println("Student cant be registerd");
 								}
 							}
 
@@ -285,9 +293,7 @@ public class Main {
 								courseExit = false;
 							}
 
-						}else {
-							System.out.println("Student cant be registerd");
-						}
+					
 
 						try {
 							oos = new ObjectOutputStream(new FileOutputStream(file));
@@ -316,6 +322,7 @@ public class Main {
 						for (School h : schoolList) {
 							System.out.println("\tSchool Name: " + h.getSchoolName());
 							for (Student s : h.getStdList()) {
+								System.out.println("\t Student Age: " + s.getstdAge());
 								System.out.println("\t Student Name: " + s.getStudentName());
 								System.out.println("\t Student Email: " + s.getStdEmail());
 								for (Course c : s.getCourseList()) {
