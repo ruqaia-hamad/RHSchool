@@ -21,6 +21,23 @@ public class School {
 	public List<Student> getStdList() {
 		return stdList;
 	}
-
+	
+	protected void finalize() throws Throwable
+    {
+        try {
+ 
+            System.out.println("School Finalize");
+        }
+        catch (Throwable e) {
+ 
+            throw e;
+        }
+        finally {
+ 
+          
+ 
+            super.finalize();
+        }
+    }
 	
 }

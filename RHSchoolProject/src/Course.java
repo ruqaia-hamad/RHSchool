@@ -21,5 +21,22 @@ public class Course {
 		return marksList;
 
 	}
+	protected void finalize() throws Throwable
+    {
+        try {
+ 
+            System.out.println("Course Finalize");
+        }
+        catch (Throwable e) {
+ 
+            throw e;
+        }
+        finally {
+ 
+          
+ 
+            super.finalize();
+        }
+    }
 
 }

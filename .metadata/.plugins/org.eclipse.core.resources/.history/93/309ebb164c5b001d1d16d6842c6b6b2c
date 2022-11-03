@@ -1,0 +1,63 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class CalculateFeesAmount {
+	
+
+	HashMap<Double, Double> studentFees = new HashMap<>();
+	HashMap<String, HashMap<Double, Double>> studentAmount = new HashMap<>();
+	public  void CalculateCurrency() {
+
+		Scanner scn = new Scanner(System.in);
+		int currency = 0;
+		String currencyName = "";
+		double feesAmount = 0;
+		double amountCal = 0;
+		try {
+//			System.out.println("Enter Student Name");
+//			String stdName = scn.next();
+			System.out.println("choose Currency:");
+			System.out.println("1-KWD");
+			System.out.println("2-AED");
+			System.out.println("3-USD");
+			System.out.println("4-INR");
+			String currency1 = scn.next();
+			int m = Integer.parseInt(currency1);
+			System.out.println("Enter Student Fees Amount");
+			feesAmount = scn.nextDouble();
+
+			if (m == 1) {
+
+				currencyName = "KWD";
+
+				amountCal = feesAmount * 0.806846;
+			} else if (m == 2) {
+				currencyName = "AED";
+				amountCal = feesAmount * 9.53789;
+			} else if (m == 3) {
+				currencyName = "USD";
+				amountCal = feesAmount * 2.59704;
+			} else if (m == 4) {
+				currencyName = "INR ";
+				amountCal = feesAmount * 214.796;
+			}
+			studentFees.put(feesAmount, amountCal);
+			studentAmount.put(currencyName,studentFees);
+
+		} catch (Exception e) {
+
+			System.out.println("Enter number please" + "\n");
+
+		}
+	}
+	public  void currencyReport() {
+		for (String currencyName : studentAmount.keySet()) {
+			Map<Double, Double> map2 = studentAmount.get(currencyName);
+			for (Double currenyKey : map2.keySet()) {
+				System.out.println("Currency: " + currencyName + " Fees Amount " + currenyKey
+						+ " Amount in OMR: " + map2.get(currenyKey));
+			}
+	}
+}
+}

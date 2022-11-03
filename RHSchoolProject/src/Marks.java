@@ -28,5 +28,21 @@ public class Marks implements MarksInterface{
 		return cousrseMark;
 	}
 	
-
+	protected void finalize() throws Throwable
+    {
+        try {
+ 
+            System.out.println("Marks Finalize");
+        }
+        catch (Throwable e) {
+ 
+            throw e;
+        }
+        finally {
+ 
+          
+ 
+            super.finalize();
+        }
+    }
 }

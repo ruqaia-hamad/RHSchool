@@ -71,7 +71,24 @@ public class Student implements Serializable,StudentInterface{
 	}
 
 
-
+	
+	protected void finalize() throws Throwable
+    {
+        try {
+ 
+            System.out.println("School Finalize");
+        }
+        catch (Throwable e) {
+ 
+            throw e;
+        }
+        finally {
+ 
+          
+ 
+            super.finalize();
+        }
+    }
 
 	
 
