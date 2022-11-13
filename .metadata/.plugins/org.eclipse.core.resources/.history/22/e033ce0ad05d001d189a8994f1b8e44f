@@ -68,7 +68,7 @@ public class Main {
 		Scanner scn = new Scanner(System.in);
 
 		HashMap<String, Double> studentFees = new HashMap<>();
-		Map<String, Map<String, Double>> studentAmount = new HashMap<>();
+		HashMap<String, HashMap<String, Double>> studentAmount = new HashMap<>();
 
 		boolean isExit = true;
 		boolean isCurrencyExit = true;
@@ -119,7 +119,6 @@ public class Main {
 							System.out.println("Enter School Name");
 							String enterSchool = scn.next();
 							schools.setSchoolName(enterSchool);
-							schools.finalize();
 
 							historyStack.push(enterSchool);
 							try {
@@ -145,7 +144,6 @@ public class Main {
 								String age = Integer.toString(stdAge);
 								historyStack.push(age);
 								students.stdAge(stdAge);
-								students.finalize();
 
 								if (stdAge > 5 && stdAge <= 18) {
 									System.out.println("Enter Student Name \n");
@@ -279,7 +277,7 @@ public class Main {
 									st.append(s);
 								}
 								oos.writeObject(st);
-
+								
 								oos.close();
 							} catch (IOException exception) {
 								System.out.println("An unexpected error is occurred");
@@ -336,11 +334,14 @@ public class Main {
 						}
 						break;
 					case "5":
-						
-						CalculateFeesAmount calc = new CalculateFeesAmount();
-						
-						calc.printStudentFeesAmountReport(studentAmount);
 
+						for (String stdName : studentAmount.keySet()) {
+							Map<String, Double> map2 = studentAmount.get(stdName);
+							for (String currenyKey : map2.keySet()) {
+								System.out.println("Name of Student: " + stdName + " Currency: " + currenyKey
+										+ " Amount: " + map2.get(currenyKey));
+							}
+						}
 						break;
 					case "6":
 						boolean isExitMenu = true;

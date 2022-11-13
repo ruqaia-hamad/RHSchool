@@ -68,7 +68,7 @@ public class Main {
 		Scanner scn = new Scanner(System.in);
 
 		HashMap<String, Double> studentFees = new HashMap<>();
-		Map<String, Map<String, Double>> studentAmount = new HashMap<>();
+		HashMap<String, HashMap<String, Double>> studentAmount = new HashMap<>();
 
 		boolean isExit = true;
 		boolean isCurrencyExit = true;
@@ -336,11 +336,14 @@ public class Main {
 						}
 						break;
 					case "5":
-						
-						CalculateFeesAmount calc = new CalculateFeesAmount();
-						
-						calc.printStudentFeesAmountReport(studentAmount);
 
+						for (String stdName : studentAmount.keySet()) {
+							Map<String, Double> map2 = studentAmount.get(stdName);
+							for (String currenyKey : map2.keySet()) {
+								System.out.println("Name of Student: " + stdName + " Currency: " + currenyKey
+										+ " Amount: " + map2.get(currenyKey));
+							}
+						}
 						break;
 					case "6":
 						boolean isExitMenu = true;

@@ -1,6 +1,0 @@
-
-public interface StudentInterface {
-	public String stdName(String name);
-	public void stdAge(int age);
-
-}
