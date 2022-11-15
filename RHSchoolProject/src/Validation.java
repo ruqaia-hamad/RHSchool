@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Validation {
 
@@ -16,5 +17,15 @@ public class Validation {
 			throw new IllegalArgumentException("Invalid password");
 		}
 
-	}
+	
+}
+public void checkUsernameAndPassword() {
+	Scanner scn=new Scanner(System.in);
+	System.out.println("\n PLEASE ENTER USERNAME TO LOGIN : \t");
+	String username = scn.next();
+	validateUsername(username);
+	System.out.println("\n PLEASE ENTER PASSWORD: \t");
+	String password = scn.next();
+	validatePassword(password);
+}
 }

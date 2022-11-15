@@ -54,6 +54,7 @@ public class Main {
 		System.out.println("+++++++++++++++++++++++++++++");
 	}
 
+	
 	public static void main(String[] args) throws Throwable {
 
 		List<School> schoolList = new ArrayList<>();
@@ -79,21 +80,13 @@ public class Main {
 		boolean isUserExit = true;
 		boolean checkMark = true;
 
-		File file = new File("C:\\Users\\user015\\eclipse-workspace\\RHNewCode\\School\\history.txt");
-		ObjectOutputStream oos = null;
-		ObjectInputStream ois = null;
+		
 
 		while (isUserExit) {
 			welcomMenu();
 			try {
 				Validation validation = new Validation();
-				System.out.println("\n PLEASE ENTER USERNAME TO LOGIN : \t");
-				String username = scn.next();
-				validation.validateUsername(username);
-				System.out.println("\n PLEASE ENTER PASSWORD: \t");
-				String password = sc.next();
-				validation.validatePassword(password);
-
+				validation.checkUsernameAndPassword();
 				System.out.println("your login is seccessful");
 				do {
 					menu();
@@ -114,74 +107,20 @@ public class Main {
 					case "1":
 						System.out.println("*  ENTER STUDENT DETAILS    *");
 						while (schoolExit) {
-
-							School schools = new School();
-							System.out.println("Enter School Name");
-							String enterSchool = scn.next();
-							schools.setSchoolName(enterSchool);
-							schools.finalize();
-
-							historyStack.push(enterSchool);
-							try {
-								if (!enterSchool.matches("^[a-zA-Z]*$")) {
-
-									throw new Exception("Please Enter valid name");
-
-								}
-							} catch (Exception e) {
-
-								System.out.println(e.getMessage());
-
-							}
-
+                         School schools=new School();
+                         schools.schoolEntry(historyStack);
+					     schools.finalize();
+							
 							courseExit = Boolean.TRUE;
 
 							while (isExit) {
 
 								Student students = new Student();
-								System.out.println("Enter Student Age");
-								int stdAge = scn.nextInt();
-								students.setStdAge(stdAge);
-								String age = Integer.toString(stdAge);
-								historyStack.push(age);
-								students.stdAge(stdAge);
+								students.checkage(historyStack);
 								students.finalize();
 
-								if (stdAge > 5 && stdAge <= 18) {
-									System.out.println("Enter Student Name \n");
-									String stdName = scn.next();
-									students.setStudentName(stdName);
-									students.stdName("Student name is : " + stdName + "\n");
-									historyStack.push(stdName);
-									try {
-										if (!stdName.matches("^[a-zA-Z]*$")) {
-
-											throw new Exception("Please Enter valid name");
-
-										}
-									} catch (Exception e) {
-
-										System.out.println(e.getMessage());
-										continue;
-
-									}
-
-									System.out.println("Enter" + " " + stdName + " " + "Email");
-									String stdEmail = scn.next();
-									students.setStdEmail(stdEmail);
-									historyStack.push(stdEmail);
-									emailList.add(stdEmail);
-									try {
-										if (!stdEmail.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-
-											throw new Exception("Please Enter valid Email");
-
-										}
-									} catch (Exception e) {
-
-										System.out.println(e.getMessage());
-										continue;
-									}
+								if (students.studAge > 5 && students.studAge <= 18) {
+									students.studentEntry(historyStack, emailList);
 
 									isCurrencyExit = Boolean.TRUE;
 
@@ -192,8 +131,7 @@ public class Main {
 										fees.CalculateCurrency();
 										studentFees.put(fees.currencyName, fees.amountCal);
 										studentAmount.put(students.getStudentName(), studentFees);
-										System.out.println(
-												"Do You want To Add Currency press 1 if  you want exit press 0");
+										System.out.println("Do You want To Add Currency press 1 if  you want exit press 0");
 										int exitcurrency = sc.nextInt();
 										if (exitcurrency == 0)
 
@@ -205,30 +143,10 @@ public class Main {
 									while (courseExit) {
 										Course studentCourse = new Course();
 										Marks courseMarks = new Marks();
-
-										System.out.println("Enter Course Name \n");
-										String addCourseName = scn.next();
-										historyStack.push(addCourseName);
-										studentCourse.setCourseName(addCourseName);
+										studentCourse.courseEntry(historyStack);
 										studentCourse.finalize();
 										while (checkMark) {
-											System.out.println("Enter Mark for Course :");
-											int addCourseMark = sc.nextInt();
-											try {
-												if (!(addCourseMark >= 0 && addCourseMark <= 100)) {
-													throw new Exception("Enter mark between 0 and 100");
-												}
-
-											} catch (Exception e) {
-
-												System.out.println(e.getMessage());
-												continue;
-
-											}
-											String addMark = Integer.toString(addCourseMark);
-											historyStack.push(addMark);
-											courseMarks.setCousrseMark(addCourseMark);
-											courseMarks.stdMark(addCourseMark);
+										 courseMarks.markEntry(historyStack);
 											courseMarks.finalize();
 											checkMark = false;
 										}
@@ -237,8 +155,7 @@ public class Main {
 										courseList.add(studentCourse);
 										students.setCourseList(courseList);
 
-										System.out
-												.println("Do You want To Add course press 1 if  you want exit press 0");
+										System.out.println("Do You want To Add course press 1 if  you want exit press 0");
 										int exitoutput = sc.nextInt();
 										if (exitoutput == 0)
 
@@ -271,69 +188,26 @@ public class Main {
 								courseExit = false;
 							}
 
-							try {
-								oos = new ObjectOutputStream(new FileOutputStream(file));
-								StringBuilder st = new StringBuilder();
-								while (!historyStack.isEmpty()) {
-									String s = historyStack.pop();
-									st.append(s);
-								}
-								oos.writeObject(st);
-
-								oos.close();
-							} catch (IOException exception) {
-								System.out.println("An unexpected error is occurred");
-								exception.printStackTrace();
-							}
+							FileReading filer=new FileReading();
+						    filer.writeObject(historyStack);
 						}
 
 						break;
 					case "2":
 
-						System.out.println("*  YOUR REPORT  *");
-
-						for (School h : schoolList) {
-							System.out.println("\tSchool Name: " + h.getSchoolName());
-							for (Student s : h.getStdList()) {
-								System.out.println("\t Student Age: " + s.getstdAge());
-								System.out.println("\t Student Name: " + s.getStudentName());
-								System.out.println("\t Student Email: " + s.getStdEmail());
-								for (Course c : s.getCourseList()) {
-									for (Marks m : c.getMarksList()) {
-										System.out.println("\nCourse Name: " + c.getCourseName() + " \tCourse Marks"
-												+ m.getCousrseMark());
-									}
-								}
-							}
-						}
+						Report rep=new Report();
+						rep.printReport(schoolList, stdList, courseList, marksList);
 						break;
 
 					case "3":
-						try {
-							if (file.isFile()) {
-								ois = new ObjectInputStream(new FileInputStream(file));
-								StringBuilder sb = (StringBuilder) new StringBuilder(ois.readObject().toString());
-								ois.close();
-
-								System.out.println(sb.toString() + "\n");
-
-							}
-						} catch (IOException exception) {
-							System.out.println("An unexpected error is occurred.");
-							exception.printStackTrace();
-						}
-
+				    FileReading filer=new FileReading();
+				    filer.readFile();
 						break;
 
 					case "4":
 
-						for (String emails : emailList) {
-							if (emialSet.add(emails) == false) {
-								System.out.println("The duplicated emails are : " + emails);
-
-							}
-
-						}
+					DuplicatedEmails depEmail=new DuplicatedEmails();
+					depEmail.checkDuplicated(emailList, emialSet);
 						break;
 					case "5":
 						

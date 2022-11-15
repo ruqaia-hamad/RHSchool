@@ -1,9 +1,11 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.util.Stack;
 
 public class Student implements Serializable,StudentInterface{
-
+    int studAge;
 	private String studentName;
 	private String stdEmail;
 	private int stdAge;
@@ -89,7 +91,56 @@ public class Student implements Serializable,StudentInterface{
             super.finalize();
         }
     }
+	public void studentEntry(Stack<String> historyStack,List<String> emailList) {
+		Scanner scn = new Scanner(System.in);
+	
+			System.out.println("Enter Student Name \n");
+			String stdName = scn.next();
+			setStudentName(stdName);
+			stdName("Student name is : " + stdName + "\n");
+			historyStack.push(stdName);
+			try {
+				if (!stdName.matches("^[a-zA-Z]*$")) {
 
+					throw new Exception("Please Enter valid name");
+
+				}
+			} catch (Exception e) {
+
+				System.out.println(e.getMessage());
+			
+
+			}
+
+			System.out.println("Enter" + " " + stdName + " " + "Email");
+			String stdEmail = scn.next();
+			setStdEmail(stdEmail);
+			historyStack.push(stdEmail);
+			emailList.add(stdEmail);
+			try {
+				if (!stdEmail.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+
+					throw new Exception("Please Enter valid Email");
+
+				}
+			} catch (Exception e) {
+
+				System.out.println(e.getMessage());
+		
+			}
+
+	}
+	
+	public void checkage(Stack<String> historyStack) {
+		Scanner scn = new Scanner(System.in);
+		System.out.println("Enter Student Age");
+		studAge = scn.nextInt();
+		setStdAge(studAge);
+		String age = Integer.toString(studAge);
+		historyStack.push(age);
+		stdAge(studAge);
+	}
+}
 	
 
-}
+

@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.util.Stack;
 
 public class School {
 
@@ -39,5 +41,28 @@ public class School {
             super.finalize();
         }
     }
+
+
+	public void schoolEntry(Stack<String> historyStack) {
+		// TODO Auto-generated method stub
+	Scanner scn = new Scanner(System.in);
+		
+		System.out.println("Enter School Name");
+		String enterSchool = scn.next();
+	    setSchoolName(enterSchool);
+	  
+		historyStack.push(enterSchool);
+		try {
+			if (!enterSchool.matches("^[a-zA-Z]*$")) {
+
+				throw new Exception("Please Enter valid name");
+
+			}
+		} catch (Exception e) {
+
+			System.out.println(e.getMessage());
+
+		}
+	}
 	
 }

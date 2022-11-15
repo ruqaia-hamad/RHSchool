@@ -1,3 +1,5 @@
+import java.util.Scanner;
+import java.util.Stack;
 
 public class Marks implements MarksInterface{
 	private int cousrseMark;
@@ -45,4 +47,24 @@ public class Marks implements MarksInterface{
             super.finalize();
         }
     }
+	public void markEntry(Stack<String> historyStack) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Mark for Course :");
+		int addCourseMark = sc.nextInt();
+		try {
+			if (!(addCourseMark >= 0 && addCourseMark <= 100)) {
+				throw new Exception("Enter mark between 0 and 100");
+			}
+
+		} catch (Exception e) {
+
+			System.out.println(e.getMessage());
+	
+
+		}
+		String addMark = Integer.toString(addCourseMark);
+		historyStack.push(addMark);
+		setCousrseMark(addCourseMark);
+		stdMark(addCourseMark);
+	}
 }

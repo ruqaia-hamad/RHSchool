@@ -1,5 +1,7 @@
 
 import java.util.List;
+import java.util.Scanner;
+import java.util.Stack;
 
 public class Course {
 	private String courseName;
@@ -38,5 +40,12 @@ public class Course {
             super.finalize();
         }
     }
+	public void courseEntry(Stack<String> historyStack) {
+		Scanner scn=new Scanner(System.in);
+		System.out.println("Enter Course Name \n");
+		String addCourseName = scn.next();
+		historyStack.push(addCourseName);
+	    setCourseName(addCourseName);
+	}
 
 }
