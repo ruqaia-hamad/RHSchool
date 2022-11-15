@@ -1,3 +1,5 @@
+package src;
+
 
 public interface StudentInterface {
 	public void stdName(String name);
