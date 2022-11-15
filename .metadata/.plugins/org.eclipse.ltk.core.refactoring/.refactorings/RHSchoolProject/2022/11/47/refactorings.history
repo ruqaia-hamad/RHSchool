@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;File.java&apos; to &apos;FileReading.java&apos;&#x0D;&#x0A;- Original project: &apos;RHSchoolProject&apos;&#x0D;&#x0A;- Original element: &apos;File.java&apos;&#x0D;&#x0A;- Renamed element: &apos;FileReading.java&apos;" description="Rename compilation unit &apos;File.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;{File.java" name="FileReading.java" references="false" stamp="1668509409592" version="1.0"/>
+</session>

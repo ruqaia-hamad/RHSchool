@@ -25,34 +25,28 @@ public class School {
 	public List<Student> getStdList() {
 		return stdList;
 	}
-	
-	protected void finalize() throws Throwable
-    {
-        try {
- 
-            System.out.println("School Finalize");
-        }
-        catch (Throwable e) {
- 
-            throw e;
-        }
-        finally {
- 
-          
- 
-            super.finalize();
-        }
-    }
 
+	protected void finalize() throws Throwable {
+		try {
+
+			System.out.println("School Finalize");
+		} catch (Throwable e) {
+
+			throw e;
+		} finally {
+
+			super.finalize();
+		}
+	}
 
 	public void schoolEntry(Stack<String> historyStack) {
 		// TODO Auto-generated method stub
-	Scanner scn = new Scanner(System.in);
-		
+		Scanner scn = new Scanner(System.in);
+
 		System.out.println("Enter School Name");
 		String enterSchool = scn.next();
-	    setSchoolName(enterSchool);
-	  
+		setSchoolName(enterSchool);
+
 		historyStack.push(enterSchool);
 		try {
 			if (!enterSchool.matches("^[a-zA-Z]*$")) {
@@ -66,5 +60,5 @@ public class School {
 
 		}
 	}
-	
+
 }

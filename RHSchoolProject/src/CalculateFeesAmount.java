@@ -46,15 +46,15 @@ public class CalculateFeesAmount {
 			System.out.println("Enter number please" + "\n");
 		}
 	}
+
 	public void printStudentFeesAmountReport(Map<String, Map<String, Double>> studentAmount) {
 		for (String stdName : studentAmount.keySet()) {
 			Map<String, Double> map2 = studentAmount.get(stdName);
 			for (String currenyKey : map2.keySet()) {
-				System.out.println("Name of Student: " + stdName + " Currency: " + currenyKey
-						+ " Amount: " + map2.get(currenyKey));
+				System.out.println("Name of Student: " + stdName + " Currency: " + currenyKey + " Amount: "
+						+ map2.get(currenyKey));
 			}
 		}
 	}
-	
 
 }

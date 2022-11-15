@@ -1,6 +1,5 @@
 package src;
 
-
 import java.io.*;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -15,47 +14,6 @@ import java.util.Stack;
 
 public class Main {
 
-	public static void subMenu() {
-		System.out.println("Please Choose Number From Menu: \n");
-		System.out.println("================================");
-		System.out.println("|  [1] Calculate Factorial     |");
-		System.out.println("|  [2] Print Fibonacci         |");
-		System.out.println("|  [3] Go Back To Menu         |");
-		System.out.println("================================");
-		System.out.println("Please Enter your Choice: \n");
-	}
-
-	public static void menu() {
-
-		System.out.println("\t\t+++++++++++++++++++++++++++++");
-		System.out.println("\t\t+ WELCOME TO THE SYSTEM     +");
-		System.out.println("\t\t+++++++++++++++++++++++++++++\n");
-		System.out.println("Please Choose Number From Menu: \n");
-		System.out.println("================================");
-		System.out.println("|  [1] Enter Student Details    |");
-		System.out.println("|  [2] Print Report             |");
-		System.out.println("|  [3] Show History             |");
-		System.out.println("|  [4] Print duplicated Emails  |");
-		System.out.println("|  [5] Student Fees             |");
-		System.out.println("|  [6] Sub Menu                 |");
-		System.out.println("|  [7] Serialization for Student|");
-		System.out.println("|  [8] Exit from program        |");
-		System.out.println("================================");
-	}
-
-	public static void welcomMenu() {
-		System.out.println("\t\t+++++++++++++++++++++++++++++");
-		System.out.println("\t\t+ WELCOME TO THE SYSTEM     +");
-		System.out.println("\t\t+++++++++++++++++++++++++++++\n");
-	}
-
-	public static void thankMenu() {
-		System.out.println("+++++++++++++++++++++++++++++");
-		System.out.println("+        THANK YOU          +");
-		System.out.println("+++++++++++++++++++++++++++++");
-	}
-
-	
 	public static void main(String[] args) throws Throwable {
 
 		List<School> schoolList = new ArrayList<>();
@@ -81,16 +39,14 @@ public class Main {
 		boolean isUserExit = true;
 		boolean checkMark = true;
 
-		
-
 		while (isUserExit) {
-			welcomMenu();
+			Menu.welcomMenu();
 			try {
 				Validation validation = new Validation();
 				validation.checkUsernameAndPassword();
 				System.out.println("your login is seccessful");
 				do {
-					menu();
+					Menu.menu();
 					String option = null;
 					do {
 						try {
@@ -108,10 +64,10 @@ public class Main {
 					case "1":
 						System.out.println("*  ENTER STUDENT DETAILS    *");
 						while (schoolExit) {
-                         School schools=new School();
-                         schools.schoolEntry(historyStack);
-					     schools.finalize();
-							
+							School schools = new School();
+							schools.schoolEntry(historyStack);
+							schools.finalize();
+
 							courseExit = Boolean.TRUE;
 
 							while (isExit) {
@@ -132,7 +88,8 @@ public class Main {
 										fees.CalculateCurrency();
 										studentFees.put(fees.currencyName, fees.amountCal);
 										studentAmount.put(students.getStudentName(), studentFees);
-										System.out.println("Do You want To Add Currency press 1 if  you want exit press 0");
+										System.out.println(
+												"Do You want To Add Currency press 1 if  you want exit press 0");
 										int exitcurrency = sc.nextInt();
 										if (exitcurrency == 0)
 
@@ -147,7 +104,7 @@ public class Main {
 										studentCourse.courseEntry(historyStack);
 										studentCourse.finalize();
 										while (checkMark) {
-										 courseMarks.markEntry(historyStack);
+											courseMarks.markEntry(historyStack);
 											courseMarks.finalize();
 											checkMark = false;
 										}
@@ -156,7 +113,8 @@ public class Main {
 										courseList.add(studentCourse);
 										students.setCourseList(courseList);
 
-										System.out.println("Do You want To Add course press 1 if  you want exit press 0");
+										System.out
+												.println("Do You want To Add course press 1 if  you want exit press 0");
 										int exitoutput = sc.nextInt();
 										if (exitoutput == 0)
 
@@ -189,31 +147,31 @@ public class Main {
 								courseExit = false;
 							}
 
-							FileReading filer=new FileReading();
-						    filer.writeObject(historyStack);
+							FileReading filer = new FileReading();
+							filer.writeObject(historyStack);
 						}
 
 						break;
 					case "2":
 
-						Report rep=new Report();
+						Report rep = new Report();
 						rep.printReport(schoolList, stdList, courseList, marksList);
 						break;
 
 					case "3":
-				    FileReading filer=new FileReading();
-				    filer.readFile();
+						FileReading filer = new FileReading();
+						filer.readFile();
 						break;
 
 					case "4":
 
-					DuplicatedEmails depEmail=new DuplicatedEmails();
-					depEmail.checkDuplicated(emailList, emialSet);
+						DuplicatedEmails depEmail = new DuplicatedEmails();
+						depEmail.checkDuplicated(emailList, emialSet);
 						break;
 					case "5":
-						
+
 						CalculateFeesAmount calc = new CalculateFeesAmount();
-						
+
 						calc.printStudentFeesAmountReport(studentAmount);
 
 						break;

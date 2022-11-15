@@ -1,4 +1,5 @@
 package src;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
@@ -23,29 +24,26 @@ public class Course {
 		return marksList;
 
 	}
-	protected void finalize() throws Throwable
-    {
-        try {
- 
-            System.out.println("Course Finalize");
-        }
-        catch (Throwable e) {
- 
-            throw e;
-        }
-        finally {
- 
-          
- 
-            super.finalize();
-        }
-    }
+
+	protected void finalize() throws Throwable {
+		try {
+
+			System.out.println("Course Finalize");
+		} catch (Throwable e) {
+
+			throw e;
+		} finally {
+
+			super.finalize();
+		}
+	}
+
 	public void courseEntry(Stack<String> historyStack) {
-		Scanner scn=new Scanner(System.in);
+		Scanner scn = new Scanner(System.in);
 		System.out.println("Enter Course Name \n");
 		String addCourseName = scn.next();
 		historyStack.push(addCourseName);
-	    setCourseName(addCourseName);
+		setCourseName(addCourseName);
 	}
 
 }
