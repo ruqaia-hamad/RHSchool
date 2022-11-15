@@ -178,7 +178,7 @@ public class Main {
 					case "6":
 						boolean isExitMenu = true;
 						do {
-							subMenu();
+							Menu.subMenu();
 							int op = sc.nextInt();
 
 							switch (op) {
@@ -200,7 +200,7 @@ public class Main {
 						break;
 
 					case "8":
-						thankMenu();
+						Menu.thankMenu();
 						exitMenu = false;
 						break;
 					default:
