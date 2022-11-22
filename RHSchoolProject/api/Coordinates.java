@@ -6,6 +6,7 @@ public class Coordinates implements  Serializable {
 	private String latitude;
 	private String longitude;
 
+	
 	public String getLatitude() {
 		return latitude;
 	}

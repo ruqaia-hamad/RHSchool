@@ -15,7 +15,7 @@ public class Results implements Serializable{
 	private Registered registered;
 	private Id id;
 	private Picture picture;
-	private Street street;
+	
 
 	public String getGender() {
 		return gender;
@@ -113,12 +113,6 @@ public class Results implements Serializable{
 		this.picture = picture;
 	}
 
-	public Street getStreet() {
-		return street;
-	}
-
-	public void setStreet(Street street) {
-		this.street = street;
-	}
-
 }
+
+

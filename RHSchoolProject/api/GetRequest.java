@@ -18,8 +18,12 @@ public class GetRequest {
 
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
+       
+        
+//        
+        System.out.println(response.body()+"\n");
       
-//        System.out.println(response.body()+"\n");
         Data data = new Gson().fromJson(response.body(), Data.class);
+        System.out.println("This " + data.getInfo().getSeeds());
     }
 }
