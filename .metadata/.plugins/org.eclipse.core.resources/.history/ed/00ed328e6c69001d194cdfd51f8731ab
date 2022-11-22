@@ -1,0 +1,8 @@
+package api;
+
+public class Results {
+	String gender;
+	String nat;
+	Name name;
+	
+}

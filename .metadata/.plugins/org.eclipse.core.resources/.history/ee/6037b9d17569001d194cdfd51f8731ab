@@ -1,0 +1,8 @@
+package api;
+
+public class ApiRest {
+
+	Data data = restTemplate.getForObject(dataResourceUrl + "/1", data.class);
+			Assertions.assertNotNull(foo.getName());
+			Assertions.assertEquals(foo.getId(), 1L);
+}

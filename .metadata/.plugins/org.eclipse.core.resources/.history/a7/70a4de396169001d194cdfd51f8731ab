@@ -1,0 +1,8 @@
+package api;
+
+public class info {
+String seeds; 
+int results;
+int page;
+String version;
+}
