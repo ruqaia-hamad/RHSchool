@@ -22,8 +22,8 @@ public class GetRequest {
 
    
         Data data = new Gson().fromJson(response.body(), Data.class);
-        int result=data.getResults().size();
-    	for(int i=0; i<result;i++) {
+        int size=data.getResults().size();
+    	for(int i=0; i<size;i++) {
         System.out.println("This the version " + data.getInfo().getVersion());
         System.out.println("This the version " + data.getResults().get(i).getGender());
         System.out.println("This the user name " + data.getResults().get(i).getName().getFirst()+data.getResults().get(0).getName().getLast());

@@ -10,23 +10,21 @@ import com.google.gson.*;
 public class GetRequest {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-    
-        String url="https://randomuser.me/api/?results=5&gender=female&password=upper,lower,1-16";
+       for(int i=0;i<5;i++) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
+                .uri(URI.create("https://randomuser.me/api/"))
                 .build();
 
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
-
-   
+       
+        
+        
+        System.out.println(response.body()+"\n");
+      
         Data data = new Gson().fromJson(response.body(), Data.class);
-        int result=data.getResults().size();
-    	for(int i=0; i<result;i++) {
-        System.out.println("This the version " + data.getInfo().getVersion());
-        System.out.println("This the version " + data.getResults().get(i).getGender());
-        System.out.println("This the user name " + data.getResults().get(i).getName().getFirst()+data.getResults().get(0).getName().getLast());
+        System.out.println("This " + data.getInfo().getVersion());
         System.out.println("**************");
-    	}
+    }
 }}

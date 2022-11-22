@@ -10,8 +10,7 @@ import com.google.gson.*;
 public class GetRequest {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-    
-        String url="https://randomuser.me/api/?results=5&gender=female&password=upper,lower,1-16";
+          String url="https://randomuser.me/api/?results=2&?gender=female";
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -19,14 +18,18 @@ public class GetRequest {
 
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
-
-   
+       
+        String api=response.body();
+        Gson gson=new GsonBuilder().setPrettyPrinting().create();
+        JsonParser jp=new  JsonParser();
+        JsonElement je=jp.parse(api);
+        String p=gson.toJson(je);
+        System.out.println(p);
+      
+    
         Data data = new Gson().fromJson(response.body(), Data.class);
-        int result=data.getResults().size();
-    	for(int i=0; i<result;i++) {
         System.out.println("This the version " + data.getInfo().getVersion());
-        System.out.println("This the version " + data.getResults().get(i).getGender());
-        System.out.println("This the user name " + data.getResults().get(i).getName().getFirst()+data.getResults().get(0).getName().getLast());
+        System.out.println("This the user name " + data.getResults().get(0).getName().getFirst()+data.getResults().get(0).getName().getLast());
         System.out.println("**************");
-    	}
+      
 }}
