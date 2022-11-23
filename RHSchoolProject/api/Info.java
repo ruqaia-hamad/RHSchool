@@ -3,17 +3,17 @@ package api;
 import java.io.Serializable;
 
 public class Info implements Serializable{
-	private String seeds;
+	private String seed;
 	private Integer results;
 	private Integer page;
 	private String version;
 
-	public String getSeeds() {
-		return seeds;
+	public String getSeed() {
+		return seed;
 	}
 
-	public void setSeeds(String seeds) {
-		this.seeds = seeds;
+	public void setSeed(String seed) {
+		this.seed= seed;
 	}
 
 	public Integer getResults() {
