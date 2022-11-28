@@ -6,6 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Stack;
 
 public class FileReading {
@@ -34,12 +38,13 @@ public class FileReading {
 
 	public void readFile() throws Throwable {
 
+
+		
 		try {
 			if (file.isFile()) {
 				ois = new ObjectInputStream(new FileInputStream(file));
 				StringBuilder sb = (StringBuilder) new StringBuilder(ois.readObject().toString());
 				ois.close();
-
 				System.out.println(sb.toString() + "\n");
 
 			}
