@@ -11,7 +11,7 @@ public class HttpClientStatus {
 		   HttpClient client = HttpClient.newHttpClient();
 	        HttpRequest request = HttpRequest.newBuilder()
 	                .uri(URI.create("https://randomuser.me/api/"))
-	                .GET() // GET is default
+	                .GET() 
 	                .build();
 
 	        HttpResponse<Void> response = client.send(request,

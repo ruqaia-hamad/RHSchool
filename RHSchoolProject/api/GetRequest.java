@@ -90,9 +90,7 @@ public class GetRequest {
 
 						String jsonFromFile = Files.readString(pathToFileForReadingWriting);
 						Files.writeString(pathToFileForReadingWriting,responseB, StandardCharsets.UTF_8);
-						
 						System.out.println(jsonFromFile);
-						
 						if (responseB.contains("error")) {
 							System.out.println("we have error");
 							Gson gson = new Gson();

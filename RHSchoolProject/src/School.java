@@ -8,6 +8,15 @@ import java.util.Stack;
 public class School {
 
 	private String schoolName;
+	private String schoolId;
+	public String getSchoolId() {
+		return schoolId;
+	}
+
+	public void setSchoolId(String schoolId) {
+		this.schoolId = schoolId;
+	}
+
 	private List<Student> stdList;
 
 	void setSchoolName(String schoolName) {
@@ -42,7 +51,9 @@ public class School {
 	public void schoolEntry(Stack<String> historyStack) {
 		// TODO Auto-generated method stub
 		Scanner scn = new Scanner(System.in);
-
+		System.out.println("Enter School ID");
+		String enterSchoolId = scn.next();
+		setSchoolId(enterSchoolId);
 		System.out.println("Enter School Name");
 		String enterSchool = scn.next();
 		setSchoolName(enterSchool);

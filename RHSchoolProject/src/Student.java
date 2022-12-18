@@ -9,6 +9,27 @@ import java.util.Stack;
 public class Student implements Serializable, StudentInterface {
 	int studAge;
 	private String studentName;
+	public int getStudAge() {
+		return studAge;
+	}
+
+	public void setStudAge(int studAge) {
+		this.studAge = studAge;
+	}
+
+	public String getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
+	}
+
+	public int getStdAge() {
+		return stdAge;
+	}
+
+	private String studentId;
 	private String stdEmail;
 	private int stdAge;
 	private List<Course> courseList;
@@ -87,12 +108,15 @@ public class Student implements Serializable, StudentInterface {
 
 	public void studentEntry(Stack<String> historyStack, List<String> emailList) {
 		Scanner scn = new Scanner(System.in);
-
+		System.out.println("Enter Student ID \n");
+		String stdID = scn.next();
+		setStudentName(stdID);
 		System.out.println("Enter Student Name \n");
 		String stdName = scn.next();
 		setStudentName(stdName);
 		stdName("Student name is : " + stdName + "\n");
 		historyStack.push(stdName);
+		historyStack.push(stdID);
 		try {
 			if (!stdName.matches("^[a-zA-Z]*$")) {
 

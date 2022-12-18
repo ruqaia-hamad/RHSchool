@@ -9,15 +9,17 @@ public class Report {
 		System.out.println("*  YOUR REPORT  *");
 
 		for (School h : schoolList) {
+			System.out.println("\tSchool ID: " + h.getSchoolId());
 			System.out.println("\tSchool Name: " + h.getSchoolName());
 			for (Student s : h.getStdList()) {
+				System.out.println("\t Student ID: " + s.getStudentId());
 				System.out.println("\t Student Age: " + s.getstdAge());
 				System.out.println("\t Student Name: " + s.getStudentName());
 				System.out.println("\t Student Email: " + s.getStdEmail());
 				for (Course c : s.getCourseList()) {
 					for (Marks m : c.getMarksList()) {
-						System.out.println(
-								"\nCourse Name: " + c.getCourseName() + " \tCourse Marks" + m.getCousrseMark());
+						System.out.println("\nCourse ID: " + c.getCourseId() +
+								"\tCourse Name: " + c.getCourseName() + " \tCourse Marks" + m.getCousrseMark());
 					}
 				}
 			}
